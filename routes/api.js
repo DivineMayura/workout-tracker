@@ -50,7 +50,7 @@ router.put("/workouts/:id", async (req, res) => {
     try {
         const workout = await Workout.findOne({ "_id": new Objectid(req.params.id) });
 
-        workout.exercises.push(req.body);
+        savedWorkout = workout.exercises.push(req.body);
 
         // Might need to change this later.
         workout.save();
@@ -63,14 +63,11 @@ router.put("/workouts/:id", async (req, res) => {
 })
 
 router.post("/workouts", async (req, res) => {
-
-    // This is basically the put route, but made post instead
     try {
         const workout = await Workout.findOne({ "_id": new Objectid(req.params.id) });
 
         workout.exercises.push(req.body);
 
-        // Might need to change this later.
         workout.save();
 
         res.status(200).json(workout)
@@ -79,9 +76,6 @@ router.post("/workouts", async (req, res) => {
         res.status(500).json({ response: "error retrieving workout" });
     }
 })
-
-
-
 
 
 
