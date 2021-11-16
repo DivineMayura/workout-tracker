@@ -60,7 +60,6 @@ router.put("/api/workouts/:id", async (req, res) => {
 
         res.status(200).json(workout)
     } catch (err) {
-        console.log(err);
         res.status(500).json({ response: "error retrieving workout" });
     }
 })
