@@ -1,29 +1,16 @@
-const router = require("express").router();
-// const db = require("./models");
+const router = require("express").Router();
+const path = require("path")
 
-router.get("/exercise", async (req, res) => {
-    try{
-        res.send("../public/exercise.html")
-    } catch (err) {
-        res.json(err)
-    }
+router.get("/exercise", (req, res) => {
+
+        res.sendFile(path.join(__dirname, "../public/exercise.html"))
+
 })
 
-router.get("/stats", async (req, res) => {
-    try{
-        res.send("../public/stats.html")
-    } catch (err) {
-        res.json(err)
-    }
-})
+router.get("/stats", (req, res) => {
 
-router.get("/index", async (req, res) => {
-    try{
-        res.send("../public/index.html")
-    } catch (err) {
-        res.json(err)
-    }
-})
+        res.sendFile(path.join(__dirname, "../public/stats.html"))
 
+})
 
 module.exports = router;
