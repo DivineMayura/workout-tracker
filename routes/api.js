@@ -16,17 +16,16 @@ router.get("/api/workouts", (req, res) => {
             }
         }
     ])
-    .sort({ day: -1 })
-    .limit(1)
+        .sort({ day: -1 })
+        .limit(1)
 
-    .then(dbWorkout => {
+        .then(dbWorkout => {
 
-        res.json(dbWorkout);
-    })
-    .catch(err => {
-        res.json(err);
-        console.log(err);
-    });
+            res.json(dbWorkout);
+        })
+        .catch(err => {
+            res.json(err);
+        });
 });
 
 router.get("/api/workouts/range", (req, res) => {
@@ -40,7 +39,6 @@ router.get("/api/workouts/range", (req, res) => {
         }
     ])
         .then(dbWorkout => {
-            console.log(dbWorkout);
             res.json(dbWorkout);
         })
         .catch(err => {
@@ -66,11 +64,14 @@ router.put("/api/workouts/:id", async (req, res) => {
 
 router.post("/api/workouts", ({ body }, res) => {
     db.Workout.create(body)
+
         .then(dbWorkout => {
+            console.log(dbWorkout)
             res.json(dbWorkout);
         })
         .catch(err => {
             res.json(err);
+            console.log(err);
         });
 })
 

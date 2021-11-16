@@ -33,4 +33,4 @@ This project is licensed under the MIT License
 
 ## Image of Site:
 
-![Image Of Site](/images/portfolio.jpg)
+![Image Of Site](site.jpg)
