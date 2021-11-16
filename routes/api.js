@@ -5,29 +5,34 @@ const mongoose = require("mongoose");
 
 
 
-router.get("/api/workouts", async (req, res) => {
+router.get("/api/workouts", (req, res) => {
+
     db.Workout.aggregate([
         {
-            $addField:
+            $addFields:
             {
                 totalDuration:
                     { $sum: "$exercises.duration" }
             }
         }
-    ]).sort({ day: -1 }).limit(1)
+    ])
+    .sort({ day: -1 })
+    .limit(1)
 
-        .then(dbBook => {
-            res.json(dbBook);
-        })
-        .catch(err => {
-            res.json(err);
-        });
+    .then(dbWorkout => {
+
+        res.json(dbWorkout);
+    })
+    .catch(err => {
+        res.json(err);
+        console.log(err);
+    });
 });
 
 router.get("/api/workouts/range", (req, res) => {
     db.Workout.aggregate([
         {
-            $addField:
+            $addFields:
             {
                 totalDuration:
                     { $sum: "$exercises.duration" }
@@ -35,6 +40,7 @@ router.get("/api/workouts/range", (req, res) => {
         }
     ])
         .then(dbWorkout => {
+            console.log(dbWorkout);
             res.json(dbWorkout);
         })
         .catch(err => {
