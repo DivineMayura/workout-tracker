@@ -18,9 +18,7 @@
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
     });
-
     const json = await res.json();
-
     return json;
   },
   async createWorkout(data = {}) {
@@ -34,7 +32,6 @@
 
     return json;
   },
-
   async getWorkoutsInRange() {
     const res = await fetch(`/api/workouts/range`);
     const json = await res.json();
